@@ -1,5 +1,24 @@
-body {
-  margin: 0px;
-  /* background-color: black; */
-  display: block;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+  html.is-wait * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    pointer-events: none !important;
+    user-select: none;
+  }
+  body {
+    width: 100%;
+    min-width: 320px;
+    overflow-x: clip;
+
+    @apply bg-light text-dark;
+  }
 }

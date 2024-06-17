@@ -1,6 +1,6 @@
 import Curve from "@/components/Layout/Curve";
 
-export default function Contact() {
+export default function Projects() {
   return (
     <>
       <Curve backgroundColor="#B0AD98">
