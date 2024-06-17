@@ -23,9 +23,11 @@
     "sass": "^1.69.5",
     "tailwind-merge": "^2.3.0",
     "three": "^0.165.0",
+    "tunnel-rat": "^0.1.2",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
+    "@types/node": "20.14.2",
     "autoprefixer": "^10.4.19",
     "eslint": "^8",
     "eslint-config-next": "14.0.3",

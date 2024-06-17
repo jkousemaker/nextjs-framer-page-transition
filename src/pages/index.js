@@ -1,3 +1,5 @@
+import { Canvas, useThree, useFrame } from "@react-three/fiber";
+
 import Curve from "@/components/Layout/Curve";
 
 export default function Home() {

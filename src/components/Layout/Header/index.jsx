@@ -12,7 +12,8 @@ export default function Header() {
     const currentRoute = routes.find(
       (route) => route.pathname === router.pathname
     );
-    setActiveTab(currentRoute);
+
+    setActiveTab(currentRoute.id);
   }, []);
   return (
     <header className="fixed top-0 left-0 w-full z-50 text-dark flex flex-row justify-between px-10 py-5">
