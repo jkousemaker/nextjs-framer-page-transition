@@ -7,35 +7,33 @@ import {
   shaderMaterial,
   SpotLight,
 } from "@react-three/drei";
+import {
+  useVelocity,
+  transform,
+  useMotionValueEvent,
+  useSpring,
+} from "framer-motion";
 
-export default function Scene() {
+export default function Scene({ scrollY }) {
   const noisyMaterial = useRef();
+  const velocity = useVelocity(scrollY);
+  const springVelocity = useSpring(velocity, { stiffness: 100, damping: 20 });
+  useMotionValueEvent(velocity, "change", (latest) => {
+    console.log(latest);
+  });
   const { size } = useThree();
   useFrame((state, delta, clock) => {
+    const threshold = transform(springVelocity.get(), [0, 1], [5.0, 30.0], {
+      clamp: false,
+    });
     noisyMaterial.current.uTime += delta;
-    //noisyMaterial.current.uResolution.set(state.size.width, state.size.height);
+    noisyMaterial.current.threshold = threshold;
   });
   return (
     <>
       <PerspectiveCamera makeDefault position={[0, 0.4, 18.22]} />
-      <SpotLight
-        position={[0, 7.52, 6.04]}
-        distance={11.06}
-        dispose={1}
-        intensity={51.18}
-        castShadow={true}
-        decay={157.44}
-        angle={0.96}
-        layers={8.62}
-        penumbra={14.36}
-        power={32.7}
-        anglePower={2.86}
-        debug={false}
-        frustumCulled={true}
-        opacity={1}
-        visible={true}
-        attenuation={17.04}
-      />
+      <ambientLight intensity={0.5} />
+
       <mesh position={0}>
         <icosahedronGeometry args={[4, 30]} />
 
@@ -43,7 +41,7 @@ export default function Scene() {
           uTime={0}
           uResolution={[size.width, size.height]}
           ref={noisyMaterial}
-          //wireframe
+          wireframe
         />
       </mesh>
     </>
@@ -53,12 +51,14 @@ export default function Scene() {
 const NoisyMaterial = shaderMaterial(
   {
     uTime: 0,
+    threshold: 1.0,
     uResolution: new THREE.Vector2(0.0, 0.0),
     color: new THREE.Color(0.2, 0.0, 0.1),
   },
   // vertex shader
   /*glsl*/ `
      uniform float uTime;
+     uniform float threshold;
   
      vec3 mod289(vec3 x)
   {
@@ -155,7 +155,7 @@ const NoisyMaterial = shaderMaterial(
   }
   
   void main() {
-  float noise = 5.0 * pnoise(position + uTime, vec3(10.0));
+  float noise = threshold * pnoise(position + uTime, vec3(10.0));
   float displacement = noise / 10.0;
   vec3 newPosition = position + normal * displacement;
     gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );

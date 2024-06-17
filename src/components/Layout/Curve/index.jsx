@@ -48,7 +48,7 @@ export default function Curve({ children, backgroundColor }) {
         )}
       />
       <motion.p
-        className="absolute left-1/2 top-[40%] text-white text-5xl z-10 -translate-x-1/2 text-center"
+        className="absolute left-1/2 top-[40%] text-white text-5xl z-[1000]  -translate-x-1/2 text-center"
         {...anim(text)}
       >
         {routes.find((route) => route.pathname === router.pathname)?.label ||
@@ -80,7 +80,7 @@ const SVG = ({ height, width }) => {
   return (
     <motion.svg
       {...anim(translate)}
-      className="fixed h-[calc(100vh+600px)] w-screen pointer-events-none top-0 left-0"
+      className="fixed z-[999] h-[calc(100vh+600px)] w-screen pointer-events-none top-0 left-0"
     >
       <motion.path {...anim(curve(initialPath, targetPath))} />
     </motion.svg>
