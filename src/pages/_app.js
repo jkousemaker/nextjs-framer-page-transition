@@ -11,8 +11,12 @@ import RouteListener from "./route-listener";
 import { useEffect } from "react";
 
 export default function App({ Component, pageProps }) {
+  const { progress } = useProgress();
   const router = useRouter();
   const lenis = useLenis();
+  useEffect(() => {
+    console;
+  }, [progress]);
 
   return (
     <ReactLenis options={{ duration: 1 }} root>

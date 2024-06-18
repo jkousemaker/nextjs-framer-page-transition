@@ -54,7 +54,7 @@ export default function Scene({ scrollY }) {
           uniforms={{
             uniforms,
           }}
-          u_time={0}
+          u_resolution={[size.width, size.height]}
           fragmentShader={fragment}
           vertexShader={vertex}
           ref={noisyMaterial}

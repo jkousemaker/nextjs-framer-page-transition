@@ -1,3 +1,4 @@
+"use client";
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import {
   Box,
@@ -17,28 +18,44 @@ import {
   ContactShadows,
   OrbitControls,
   useIntersect,
+  ScreenSizer,
   shaderMaterial,
 } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
 import { useProgress } from "@react-three/drei";
 import vertexShader from "@/shaders/GlowShader/vertex.js";
 import fragmentShader from "@/shaders/GlowShader/fragment.js";
+import { useControls } from "leva";
+import { transform, useScroll, useSpring } from "framer-motion";
 export default function ContactCanvas() {
   const ref = useRef();
   const { progress } = useProgress();
+  const { scrollYProgress } = useScroll({});
+  const scrollSpring = useSpring(scrollYProgress);
   useEffect(() => {
-    console.log(progress);
+    console.log(ref.current);
+    ref.current.u_resolution = [window.innerWidth, window.innerHeight];
   }, [progress]);
+
   useFrame(({ state, clock }) => {
-    ref.current.uNoise = Math.sin(clock.getElapsedTime()) * 20;
-    console.log();
+    const uDisplace = transform(scrollYProgress.get(), [0, 1], [0.0, 2.0]);
+    ref.current.uDisplace = uDisplace;
+    //ref.current.uDisplace = Math.sin(clock.getElapsedTime() * 0.5) * 2;
+    console.log(uDisplace);
   });
   return (
     <>
       <PerspectiveCamera makeDefault position={[0, 0, 50]} />
-      <Box args={[10, 20, 20]}>
-        <glowShader ref={ref} />
-      </Box>
+      <ScreenSizer
+        scale={1} // scale factor
+      >
+        <Box
+          scale={10}
+          args={[101, 100, 100]} // will render roughly as a 100px box
+        >
+          <glowShader ref={ref} />
+        </Box>
+      </ScreenSizer>
     </>
   );
 }
@@ -55,7 +72,7 @@ function BasicModel(props) {
   );
 }
 
-function HeavyModel() {
+function HeavyModel({ uniforms }) {
   const { scene, nodes } = useGLTF("/heave-car.glb");
   return <primitive object={scene} scale={1} />;
 }
@@ -65,7 +82,7 @@ const GlowShader = shaderMaterial(
     uTime: 0,
     uResolution: new THREE.Vector2(),
     uDisplace: 2,
-    uSpread: 1.2,
+    uSpread: 4,
     uNoise: 16,
   },
   vertexShader,
