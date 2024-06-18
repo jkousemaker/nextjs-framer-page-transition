@@ -12,6 +12,7 @@ const anim = (variants) => {
     initial: "initial",
     animate: "enter",
     exit: "exit",
+    type1: "test",
   };
 };
 
@@ -47,14 +48,17 @@ export default function Curve({ children, backgroundColor }) {
           dimensions.width == null && "!opacity-100"
         )}
       />
-      <motion.p
-        className="absolute left-1/2 top-[40%] text-white text-5xl z-[1000]  -translate-x-1/2 text-center"
-        {...anim(text)}
-      >
-        {routes.find((route) => route.pathname === router.pathname)?.label ||
-          ""}
-      </motion.p>
-      {dimensions.width != null && <SVG {...dimensions} />}
+      <div className="fixed top-0 z-[99999] pointer-events-none h-screen w-screen grid place-items-center">
+        <motion.p
+          className="absolute text-white text-5xl z-[1000] text-center"
+          {...anim(text)}
+        >
+          {routes.find((route) => route.pathname === router.pathname)?.label ||
+            ""}
+        </motion.p>
+        {dimensions.width != null && <SVG {...dimensions} />}
+      </div>
+
       {children}
     </div>
   );

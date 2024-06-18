@@ -1,48 +1,27 @@
+import { Canvas } from "@react-three/fiber";
+import { useScroll, useMotionValueEvent, useVelocity } from "framer-motion";
+import { Suspense, useRef } from "react";
+import CustomShaderMaterial from "three-custom-shader-material";
 import Curve from "@/components/Layout/Curve";
-
+import Scene from "@/Scene";
 export default function Projects() {
+  const ref = useRef();
+  const { scrollYProgress } = useScroll({
+    target: ref,
+  });
+
   return (
     <>
       <Curve backgroundColor="#B0AD98">
-        <h1>Home</h1>
-        <div className="flex flex-col ">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-            imperdiet nibh sit amet velit dignissim, non tempus nisl
-            pellentesque. Praesent sagittis magna sit amet ex blandit, id
-            pharetra lectus feugiat. Praesent sit amet congue ipsum, in ultrices
-            neque. In dapibus in purus vitae dignissim. Quisque molestie
-            ullamcorper elementum. Sed sodales erat augue. Lorem ipsum dolor sit
-            amet, consectetur adipiscing elit. Duis aliquet quis lectus vitae
-            venenatis. Aliquam erat volutpat. Nulla maximus sodales nibh dapibus
-            congue. Integer nec pharetra felis, quis commodo elit. Fusce et
-            aliquet neque. Vivamus leo diam, pharetra ut lorem eu, suscipit
-            egestas ipsum. Aenean mauris ligula, laoreet ut volutpat sit amet,
-            convallis et turpis.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-            imperdiet nibh sit amet velit dignissim, non tempus nisl
-            pellentesque. Praesent sagittis magna sit amet ex blandit, id
-            pharetra lectus feugiat. Praesent sit amet congue ipsum, in ultrices
-            neque. In dapibus in purus vitae dignissim. Quisque molestie
-            ullamcorper elementum. Sed sodales erat augue. Lorem ipsum dolor sit
-            amet, consectetur adipiscing elit. Duis aliquet quis lectus vitae
-            venenatis. Aliquam erat volutpat. Nulla maximus sodales nibh dapibus
-            congue. Integer nec pharetra felis, quis commodo elit. Fusce et
-            aliquet neque. Vivamus leo diam, pharetra ut lorem eu, suscipit
-            egestas ipsum. Aenean mauris ligula, laoreet ut volutpat sit amet,
-            convallis et turpis.
-          </p>
-          <p>
-            Quisque molestie ullamcorper elementum. Sed sodales erat augue.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-            aliquet quis lectus vitae venenatis. Aliquam erat volutpat. Nulla
-            maximus sodales nibh dapibus congue. Integer nec pharetra felis,
-            quis commodo elit. Fusce et aliquet neque. Vivamus leo diam,
-            pharetra ut lorem eu, suscipit egestas ipsum. Aenean mauris ligula,
-            laoreet ut volutpat sit amet, convallis et turpis.
-          </p>
+        <section className="h-[100vh]" />
+        <section ref={ref} className="h-[300vh] bg-red-500/50"></section>
+        <section className="h-[200vh]" />
+        <div className="fixed inset-0 size-full">
+          <Canvas>
+            <Suspense fallback={null}>
+              <Scene scrollY={scrollYProgress} />
+            </Suspense>
+          </Canvas>
         </div>
       </Curve>
     </>

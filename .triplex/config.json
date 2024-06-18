@@ -1,4 +1,5 @@
 {
   "components": ["../src/components/**/*.jsx"],
-  "files": ["../src/**/*.jsx"]
+  "files": ["../src/**/*.jsx"],
+  "provider": "./provider.jsx"
 }
