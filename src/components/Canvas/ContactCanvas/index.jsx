@@ -38,7 +38,11 @@ export default function ContactCanvas() {
   }, [progress]);
 
   useFrame(({ state, clock }) => {
-    const uDisplace = transform(scrollYProgress.get(), [0, 1], [0.0, 2.0]);
+    const uDisplace = transform(
+      scrollYProgress.get(),
+      [0, 0.3, 1],
+      [0.0, 0.15, 1.0]
+    );
     ref.current.uDisplace = uDisplace;
     //ref.current.uDisplace = Math.sin(clock.getElapsedTime() * 0.5) * 2;
     console.log(uDisplace);

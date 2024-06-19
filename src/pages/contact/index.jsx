@@ -8,9 +8,8 @@ export default function Contact() {
   return (
     <>
       <Curve backgroundColor="#B0AD98">
-        <section className="h-[100vh]" />
         <section className="h-[300vh] bg-red-500/50"></section>
-        <section className="h-[200vh]" />
+
         <div className="fixed inset-0 size-full">
           <Canvas>
             <Suspense fallback={null}>
