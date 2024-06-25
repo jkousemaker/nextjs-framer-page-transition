@@ -16,7 +16,7 @@ const anim = (variants) => {
   };
 };
 
-export default function Curve({ children, backgroundColor }) {
+export const Curve = React.forwardRef(({ children, backgroundColor }, ref) => {
   const router = useRouter();
   const [dimensions, setDimensions] = useState({
     width: null,
@@ -41,7 +41,7 @@ export default function Curve({ children, backgroundColor }) {
   }, []);
 
   return (
-    <div className="min-h-screen p-10" style={{ backgroundColor }}>
+    <div className="min-h-screen" style={{ backgroundColor }} ref={ref}>
       <div
         className={cn(
           "fixed h-[calc(100vh+600px)] w-screen pointer-events-none top-0 left-0 bg-black opacity-0 transition-opacity duration-100",
@@ -58,11 +58,12 @@ export default function Curve({ children, backgroundColor }) {
         </motion.p>
         {dimensions.width != null && <SVG {...dimensions} />}
       </div>
-
-      {children}
+      <main className="">{children}</main>
     </div>
   );
-}
+});
+
+Curve.displayName = "Curve";
 
 const SVG = ({ height, width }) => {
   const initialPath = `

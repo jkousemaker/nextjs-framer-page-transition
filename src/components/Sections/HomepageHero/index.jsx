@@ -1,108 +1,65 @@
-/* This example requires Tailwind CSS v2.0+ */
-
-import Image from "next/image";
-
-const features = [
+import { Suspense } from "react";
+import { PerspectiveCamera } from "@react-three/drei";
+import dynamic from "next/dynamic";
+const View = dynamic(
+  () => import("@/components/Canvas/View").then((mod) => mod.View),
   {
-    name: "Analytics",
-    href: "#",
-    description:
-      "Get a better understanding of where your traffic is coming from.",
-  },
-  {
-    name: "Engagement",
-    href: "#",
-    description: "Speak directly to your customers in a more meaningful way.",
-  },
-  {
-    name: "Security",
-    href: "#",
-    description: "Your customers' data will be safe and secure.",
-  },
-  {
-    name: "Integrations",
-    href: "#",
-    description: "Connect with third-party tools that you're already using.",
-  },
-  {
-    name: "Automations",
-    href: "#",
-    description:
-      "Build strategic funnels that will drive your customers to convert",
-  },
-];
-const callsToAction = [
-  {
-    name: "Watch Demo",
-    href: "#",
-    resources: [
-      {
-        name: "Help Center",
-        description:
-          "Get all of your questions answered in our forums or contact support.",
-        href: "#",
-      },
-    ],
-  },
-];
-
-const recentPosts = [
-  { id: 1, name: "Boost your conversion rate", href: "#" },
-  {
-    id: 2,
-    name: "How to use search engine optimization to drive traffic to your site",
-    href: "#",
-  },
-  { id: 3, name: "Improve your customer experience", href: "#" },
-];
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
-
-export default function Example() {
-  return (
-    <div className="relative bg-gray-50">
-      <main>
-        <div className="mx-auto max-w-7xl w-full pt-16 pb-20 text-center">
-          <div className=" px-8">
-            <h1 className=" tracking-tight font-extrabold text-gray-900 text-5xl">
-              <span className="block">Data to enrich your</span>{" "}
-              <span className="block text-indigo-600">online business</span>
-            </h1>
-            <p className="mt-3 max-w-md mx-auto  text-gray-500 text-xl">
-              Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-              lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-              fugiat aliqua.
-            </p>
-            <div className="mt-10 flex justify-center">
-              <div className="mt-3 rounded-md shadow  ml-3">
-                <a
-                  href="#"
-                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
-                >
-                  Get started
-                </a>
-              </div>
-              <div className="mt-3 rounded-md shadow  ml-3">
-                <a
-                  href="#"
-                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50"
-                >
-                  Live demo
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="relative w-full h-72">
-          <Image
-            className="absolute inset-0 w-full h-full object-cover"
-            src="https://images.unsplash.com/photo-1520333789090-1afc82db536a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2102&q=80"
-            alt=""
+    ssr: false,
+    loading: () => (
+      <div className="flex h-96 w-full flex-col items-center justify-center">
+        <svg
+          className="-ml-1 mr-3 h-5 w-5 animate-spin text-black"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            className="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            strokeWidth="4"
           />
+          <path
+            className="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 0 1 8-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 0 1 4 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+          />
+        </svg>
+      </div>
+    ),
+  }
+);
+export default function HeroSection() {
+  return (
+    <section className="h-screen">
+      <div className="grid size-full grid-cols-11 grid-rows-7 p-10 gap-5">
+        <div className="bg-blue-500/50 col-span-full row-span-3 overflow-hidden rounded-3xl">
+          <View>
+            <Suspense fallback={null}>
+              <PerspectiveCamera makeDefault position={[0, 0, 50]} />
+              <HeroSection />
+            </Suspense>
+          </View>
         </div>
-      </main>
-    </div>
+        <div className="bg-gray-500/50 col-span-5"></div>
+        <div className="bg-gray-900/50 col-span-1"></div>
+        <div className="bg-gray-500/50 col-span-5"></div>
+        <div className="bg-black/50 col-span-5 row-span-3 flex flex-col items-start justify-between">
+          <button className="bg-black text-white text-md font-thin py-1 px-4 rounded-full">
+            Join The Revolution
+          </button>
+          <h1 className="text-9xl font-semibold tracking-tight">
+            <span>Gabryella</span>
+            <br />
+            <span>Teixeira</span>
+          </h1>
+        </div>
+        <div className="bg-red-500/50 col-span-1 row-span-3 flex items-end justify-center">
+          <p className="text-3xl">Logo</p>
+        </div>
+        <div className="bg-black/50 col-span-5 row-span-3"></div>
+      </div>
+    </section>
   );
 }

@@ -9,7 +9,7 @@ export default function Footer({}) {
     target: ref,
     offset: ["start end", "end end"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["30%", "0%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["100%", "0%"]);
   return (
     <motion.div
       ref={ref}
