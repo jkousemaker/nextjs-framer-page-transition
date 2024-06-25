@@ -5,7 +5,7 @@ import { Preload } from "@react-three/drei";
 import { r3f } from "@/utils/global";
 import * as THREE from "three";
 
-export default function Scene({ ...props }) {
+export default function RatCanvas({ ...props }) {
   // Everything defined in here will persist between route changes, only children are swapped
   return (
     <Canvas
