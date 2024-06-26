@@ -1,4 +1,5 @@
 import Image from "next/image";
+import React from "react";
 import Link from "next/link";
 import {
   AnimatePresence,
@@ -6,7 +7,7 @@ import {
   useMotionValue,
   useSpring,
 } from "framer-motion";
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 import { useCursorStore } from "@/stores/cursorStore";
 import { projects } from "@/data/projects";
 import useMouse from "@/utils/hooks/useMouse";
@@ -21,13 +22,13 @@ export default function ProjectList() {
           <span className="w-full flex flex-wrap">2024/current</span>
         </h1>
       </div>
-      <div className="w-full grid grid-cols-8 grid-rows-1 gap-2 text-[.7292vw] font-bold">
+      <div className="w-full grid grid-cols-8 grid-rows-1 gap-2 text-xl font-bold">
         <div className="col-span-2 ">id</div>
         <div className="col-span-3 ">title</div>
         <div className="col-span-2 ">project type</div>
         <div className="col-span-1 flex justify-end">year</div>
       </div>
-      <div className="pt-[3.3333vw]">
+      <div className="pt-[3.3333vw] relative">
         <List />
       </div>
     </section>
@@ -35,26 +36,22 @@ export default function ProjectList() {
 }
 
 function List() {
-  const mouse = useMouse();
-  const dimension = useDimension();
-  console.log(dimension, mouse.x.get(), mouse.y.get());
-  const smoothMouse = {
-    x: useSpring(mouse.x, { stiffness: 300, damping: 90 }),
-    y: useSpring(mouse.y, { stiffness: 300, damping: 90 }),
-  };
-
   const [modal, setModal] = useState({ active: false, index: 0 });
-  const ref = useRef();
+  const handleSetModal = useCallback((newModal) => {
+    setModal(newModal);
+  }, []);
+  const listContainer = useRef(null);
   return (
     <>
       <Modal modal={modal} projects={projects} />
-      <ul className="pointer-events-auto ">
+      <ul ref={listContainer} className="pointer-events-auto ">
         {projects.map((project, index) => (
           <Project
             key={index}
             index={index}
             project={project}
-            setModal={setModal}
+            setModal={handleSetModal}
+            parentRef={listContainer}
           />
         ))}
       </ul>
@@ -62,39 +59,100 @@ function List() {
   );
 }
 
-function Project({ index, project, setModal }) {
-  //Animate x of image so center is on cursor but restrict y
+const Project = React.memo(function Project({ index, project, setModal }) {
   const MotionLink = motion(Link);
+
+  const handleMouseEnter = useCallback(() => {
+    setModal({ active: true, index });
+  }, [setModal, index]);
+
+  const handleMouseLeave = useCallback(() => {
+    setModal({ active: false, index });
+  }, [setModal, index]);
 
   return (
     <li
-      key={project.id}
       className="pointer-events-auto w-full relative"
-      style={{}}
-      onMouseEnter={() => {
-        setModal({ active: true, index });
-      }}
-      onMouseLeave={() => {
-        setModal({ active: false, index });
-      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      <Link
+      <MotionLink
+        variants={{
+          initial: {
+            opacity: 0,
+          },
+          enter: {
+            opacity: 1,
+          },
+          hover: {
+            scale: 1.01,
+          },
+        }}
+        initial="initial"
+        animate="enter"
+        whileHover="hover"
         href="/"
-        className="grid place-projects-center left-0 relative z-10 hover:z-0"
+        className="grid place-projects-center left-0 relative z-10 hover:z-0 after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-white"
       >
-        <div className="w-full grid grid-cols-8 grid-rows-1 gap-2">
-          <div className="col-span-2 ">{project.id}</div>
-          <div className="col-span-3 ">{project.title}</div>
-          <div className="col-span-2 ">{project.category}</div>
-          <div className="col-span-1 flex justify-end">2024</div>
+        <div className="w-full grid grid-cols-8 grid-rows-1 text-light  inset-0 ">
+          <motion.div
+            className="col-span-full py-5 px-2 absolute flex justify-around items-center bg-red-400 text-dark transition-[top] duration-500 ease-[0.76,0,0.24,1] z-[999] size-full"
+            variants={{
+              initial: {
+                clipPath: "polygon(0% 100%,2% 100%,99% 100%,100% 100%)",
+              },
+              enter: {
+                clipPath: "polygon(0% 100%,2% 100%,99% 100%,100% 100%)",
+              },
+              hover: {
+                clipPath: "polygon(0% 100%,0.00% 0.00%,100% 0%,100% 100%)",
+              },
+            }}
+          >
+            <motion.h2
+              variants={{
+                initial: { y: 0, rotate: -30 },
+                enter: { y: 0, rotate: 0 },
+                hover: { x: "-10%", rotate: 0, opacity: 0.5 },
+              }}
+              style={{ zIndex: 99999 }}
+              className="text-[60px]"
+            >
+              C2 Montreal{" "}
+            </motion.h2>
+            <motion.p
+              variants={{
+                initial: { y: 0, rotate: 30 },
+                enter: { y: 0, rotate: 0 },
+                hover: { x: "10%", rotate: 0, opacity: 0.5 },
+              }}
+            >
+              Design & Develomotion.pment
+            </motion.p>
+          </motion.div>
+          <div className="col-span-full py-5 px-2 text-light  relative flex justify-around items-center bg-black  ">
+            <motion.h2
+              variants={{
+                initial: { y: 0, rotate: -30 },
+                enter: { y: 0, rotate: 0 },
+                hover: { x: "-10%", rotate: 0, opacity: 0.5 },
+              }}
+              className="text-[60px]"
+            >
+              C2 Montreal{" "}
+            </motion.h2>
+            <motion.p
+              variants={{
+                initial: { y: 0, rotate: 30 },
+                enter: { y: 0, rotate: 0 },
+                hover: { x: "10%", rotate: 0, opacity: 0.5 },
+              }}
+            >
+              Design & Develomotion.pment
+            </motion.p>
+          </div>
         </div>
-        <div className="w-full grid grid-cols-8 grid-rows-1 gap-2 text-light absolute">
-          <div className="col-span-2 bg-red-500">{project.id}</div>
-          <div className="col-span-3 bg-red-500">{project.title}</div>
-          <div className="col-span-2 bg-red-500">{project.category}</div>
-          <div className="col-span-1 bg-red-500 flex justify-end">2024</div>
-        </div>
-      </Link>
+      </MotionLink>
     </li>
   );
-}
+});

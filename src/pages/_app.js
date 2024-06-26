@@ -11,9 +11,11 @@ import { useEffect, useRef, useCallback } from "react";
 import Header from "@/components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
 import useMouse from "@/utils/hooks/useMouse";
-import { View } from "@/components/Canvas/View";
 
 const RatScene = dynamic(() => import("@/components/Canvas/index"), {
+  ssr: false,
+});
+const View = dynamic(() => import("@/components/Canvas/View"), {
   ssr: false,
 });
 export default function App({ Component, pageProps }) {
@@ -28,6 +30,7 @@ export default function App({ Component, pageProps }) {
   }
   return (
     <ReactLenis options={{ duration: 1, easing: calculateEasing }} root>
+      <div ref={container} className=""></div>
       <Header />
 
       <main className="">
@@ -47,6 +50,7 @@ export default function App({ Component, pageProps }) {
         }}
         eventSource={container}
         eventPrefix="client"
+        className="text-[6rem] font-semibold tracking-tight"
       />
     </ReactLenis>
   );

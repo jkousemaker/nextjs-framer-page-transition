@@ -1,3 +1,4 @@
+"use client";
 import { useRef } from "react";
 import {
   motion,
@@ -27,9 +28,9 @@ export default function ParallaxText({ children, baseVelocity = 100 }) {
    * have to replace for wrapping that works for you or dynamically
    * calculate
    */
-  const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
+  const x = useTransform(baseX, (v) => `${wrap(-42, 0, v)}%`);
 
-  const directionFactor = useRef < number > 1;
+  const directionFactor = useRef(1);
   useAnimationFrame((t, delta) => {
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
 
@@ -56,8 +57,11 @@ export default function ParallaxText({ children, baseVelocity = 100 }) {
    * dynamically generated number of children.
    */
   return (
-    <div className="parallax">
-      <motion.div className="scroller" style={{ x }}>
+    <div className="overflow-hidden -tracking-[2px] leading-[0.8] whitespace-nowrap flex-nowrap">
+      <motion.div
+        className="font-semibold uppercase text-9xl whitespace-nowrap flex flex-nowrap gap-10"
+        style={{ x }}
+      >
         <span>{children} </span>
         <span>{children} </span>
         <span>{children} </span>

@@ -14,6 +14,8 @@ import { useEffect, useMemo, useRef, useCallback } from "react";
 import { Vector2, Color } from "three";
 import { Curve } from "@/components/Layout/Curve";
 import dynamic from "next/dynamic";
+import ParallaxText from "@/components/Elements/ParallaxText";
+
 const View = dynamic(
   () => import("@/components/Canvas/View").then((mod) => mod.View),
   {
@@ -48,7 +50,7 @@ import fragmentShader from "!!raw-loader!@/shaders/BackgroundShader/fragmentShad
 import "@/utils/materials";
 export default function HeroSection() {
   return (
-    <section className="h-screen">
+    <section className="h-screen ">
       <div className="grid size-full grid-cols-11 grid-rows-7 p-10 gap-5">
         <View
           as="div"
@@ -65,10 +67,14 @@ export default function HeroSection() {
           <button className="bg-black text-white text-md font-thin py-1 px-4 rounded-full">
             Join The Revolution
           </button>
-          <h1 className="text-9xl font-semibold tracking-tight">
-            <span>Gabryella</span>
-            <br />
-            <span>Teixeira</span>
+          <h1 className="text-9xl font-semibold tracking-[1em]">
+            <ParallaxText baseVelocity={-5}>Gabryella Teixeira</ParallaxText>
+            <ParallaxText baseVelocity={10}>
+              <div className="flex flex-row gap-56">
+                <p>Creative Designer</p>
+                <p>Moddeler</p>
+              </div>
+            </ParallaxText>
           </h1>
         </div>
         <div className="bg-red-500/50 col-span-1 row-span-3 flex items-end justify-center">

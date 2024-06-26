@@ -84,7 +84,6 @@ function AuroraPlane() {
   );
   useFrame((state, delta) => {
     if (meshRef.current) {
-      console.log(meshRef.current.material.uniforms);
       meshRef.current.material.uniforms.iTime.value = state.clock.elapsedTime;
       meshRef.current.material.uniforms.iResolution.value.set(
         size.width,
@@ -95,7 +94,7 @@ function AuroraPlane() {
   });
 
   return (
-    <mesh ref={meshRef} scale={1}>
+    <mesh ref={meshRef} scale={0.5}>
       <planeGeometry args={[10, 10]} />
       <shaderMaterial
         fragmentShader={fragmentShader}

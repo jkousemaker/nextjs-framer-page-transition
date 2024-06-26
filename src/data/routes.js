@@ -19,4 +19,9 @@ export const routes = [
     label: "Contact",
     pathname: "/contact",
   },
+  {
+    id: 4,
+    label: "Playground",
+    pathname: "/playground",
+  },
 ];
