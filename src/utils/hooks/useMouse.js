@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useMotionValue } from "framer-motion";
 
 export default function useMouse() {
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
-
+  const mouse = {
+    x: useMotionValue(0),
+    y: useMotionValue(0),
+  };
   const mouseMove = (e) => {
     const { clientX, clientY } = e;
-    setMouse({
-      x: clientX,
-      y: clientY,
-    });
+    mouse.x.set(clientX);
+    mouse.y.set(clientY);
   };
 
   useEffect(() => {

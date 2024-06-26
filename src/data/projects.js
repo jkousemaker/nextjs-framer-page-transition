@@ -5,6 +5,7 @@ export const projects = [
     category: "Motion Design",
     img: "https://images.unsplash.com/photo-1644843521796-33876c641aeb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-1",
+    color: "#FF5733",
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ export const projects = [
     category: "Web Design",
     img: "https://images.unsplash.com/photo-1717501218347-64853a917fd8?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-2",
+    color: "#33FF57",
   },
   {
     id: 3,
@@ -19,6 +21,7 @@ export const projects = [
     category: "Motion Design",
     img: "https://images.unsplash.com/photo-1717406038728-53b8ba62490f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-3",
+    color: "#3357FF",
   },
   {
     id: 4,
@@ -26,6 +29,7 @@ export const projects = [
     category: "Web Design",
     img: "https://images.unsplash.com/photo-1644843521796-33876c641aeb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-4",
+    color: "#FF33F1",
   },
   {
     id: 5,
@@ -33,6 +37,7 @@ export const projects = [
     category: "Motion Design",
     img: "https://images.unsplash.com/photo-1717501218347-64853a917fd8?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-5",
+    color: "#33FFF1",
   },
   {
     id: 6,
@@ -40,6 +45,7 @@ export const projects = [
     category: "Web Design",
     img: "https://images.unsplash.com/photo-1717406038728-53b8ba62490f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-6",
+    color: "#FF3333",
   },
   {
     id: 7,
@@ -47,6 +53,7 @@ export const projects = [
     category: "Motion Design",
     img: "https://images.unsplash.com/photo-1644843521796-33876c641aeb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-7",
+    color: "#33FF33",
   },
   {
     id: 8,
@@ -54,6 +61,7 @@ export const projects = [
     category: "Web Design",
     img: "https://images.unsplash.com/photo-1717501218347-64853a917fd8?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-8",
+    color: "#3333FF",
   },
   {
     id: 9,
@@ -61,6 +69,7 @@ export const projects = [
     category: "Motion Design",
     img: "https://images.unsplash.com/photo-1717406038728-53b8ba62490f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-9",
+    color: "#FFFF33",
   },
   {
     id: 10,
@@ -68,6 +77,7 @@ export const projects = [
     category: "Web Design",
     img: "https://images.unsplash.com/photo-1644843521796-33876c641aeb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-10",
+    color: "#33FFFF",
   },
   {
     id: 11,
@@ -75,6 +85,7 @@ export const projects = [
     category: "Motion Design",
     img: "https://images.unsplash.com/photo-1717501218347-64853a917fd8?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-11",
+    color: "#FF33FF",
   },
   {
     id: 12,
@@ -82,6 +93,7 @@ export const projects = [
     category: "Web Design",
     img: "https://images.unsplash.com/photo-1717406038728-53b8ba62490f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-12",
+    color: "#FFB733",
   },
   {
     id: 13,
@@ -89,6 +101,7 @@ export const projects = [
     category: "Motion Design",
     img: "https://images.unsplash.com/photo-1644843521796-33876c641aeb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-13",
+    color: "#33FFB7",
   },
   {
     id: 14,
@@ -96,6 +109,7 @@ export const projects = [
     category: "Web Design",
     img: "https://images.unsplash.com/photo-1717501218347-64853a917fd8?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-14",
+    color: "#B733FF",
   },
   {
     id: 15,
@@ -103,6 +117,7 @@ export const projects = [
     category: "Motion Design",
     img: "https://images.unsplash.com/photo-1717406038728-53b8ba62490f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-15",
+    color: "#FF7333",
   },
   {
     id: 16,
@@ -110,6 +125,7 @@ export const projects = [
     category: "Web Design",
     img: "https://images.unsplash.com/photo-1644843521796-33876c641aeb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-16",
+    color: "#33FF73",
   },
   {
     id: 17,
@@ -117,6 +133,7 @@ export const projects = [
     category: "Motion Design",
     img: "https://images.unsplash.com/photo-1717501218347-64853a917fd8?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-17",
+    color: "#7333FF",
   },
   {
     id: 18,
@@ -124,6 +141,7 @@ export const projects = [
     category: "Web Design",
     img: "https://images.unsplash.com/photo-1717406038728-53b8ba62490f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-18",
+    color: "#FF3373",
   },
   {
     id: 19,
@@ -131,6 +149,7 @@ export const projects = [
     category: "Motion Design",
     img: "https://images.unsplash.com/photo-1644843521796-33876c641aeb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-19",
+    color: "#73FF33",
   },
   {
     id: 20,
@@ -138,6 +157,7 @@ export const projects = [
     category: "Web Design",
     img: "https://images.unsplash.com/photo-1717501218347-64853a917fd8?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-20",
+    color: "#3373FF",
   },
   {
     id: 21,
@@ -145,6 +165,7 @@ export const projects = [
     category: "Motion Design",
     img: "https://images.unsplash.com/photo-1717406038728-53b8ba62490f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-21",
+    color: "#FFFF73",
   },
   {
     id: 22,
@@ -152,6 +173,7 @@ export const projects = [
     category: "Web Design",
     img: "https://images.unsplash.com/photo-1644843521796-33876c641aeb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-22",
+    color: "#73FFFF",
   },
   {
     id: 23,
@@ -159,6 +181,7 @@ export const projects = [
     category: "Motion Design",
     img: "https://images.unsplash.com/photo-1717501218347-64853a917fd8?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-23",
+    color: "#FF73FF",
   },
   {
     id: 24,
@@ -166,6 +189,7 @@ export const projects = [
     category: "Web Design",
     img: "https://images.unsplash.com/photo-1717406038728-53b8ba62490f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-24",
+    color: "#FFA333",
   },
   {
     id: 25,
@@ -173,6 +197,7 @@ export const projects = [
     category: "Motion Design",
     img: "https://images.unsplash.com/photo-1644843521796-33876c641aeb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-25",
+    color: "#33FFA3",
   },
   {
     id: 26,
@@ -180,6 +205,7 @@ export const projects = [
     category: "Web Design",
     img: "https://images.unsplash.com/photo-1717501218347-64853a917fd8?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-26",
+    color: "#FF73FF",
   },
   {
     id: 27,
@@ -187,6 +213,7 @@ export const projects = [
     category: "Motion Design",
     img: "https://images.unsplash.com/photo-1717406038728-53b8ba62490f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-27",
+    color: "#FFFF73",
   },
   {
     id: 28,
@@ -194,6 +221,7 @@ export const projects = [
     category: "Web Design",
     img: "https://images.unsplash.com/photo-1644843521796-33876c641aeb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-28",
+    color: "#73FF33",
   },
   {
     id: 29,
@@ -201,6 +229,7 @@ export const projects = [
     category: "Motion Design",
     img: "https://images.unsplash.com/photo-1717501218347-64853a917fd8?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-29",
+    color: "#FFA333",
   },
   {
     id: 30,
@@ -208,6 +237,7 @@ export const projects = [
     category: "Web Design",
     img: "https://images.unsplash.com/photo-1717406038728-53b8ba62490f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-30",
+    color: "#FF3333",
   },
   {
     id: 31,
@@ -215,6 +245,7 @@ export const projects = [
     category: "Motion Design",
     img: "https://images.unsplash.com/photo-1644843521796-33876c641aeb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-31",
+    color: "#73FF33",
   },
   {
     id: 32,
@@ -222,5 +253,6 @@ export const projects = [
     category: "Web Design",
     img: "https://images.unsplash.com/photo-1717501218347-64853a917fd8?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-32",
+    color: "#73FF33",
   },
 ];
