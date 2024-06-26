@@ -11,7 +11,11 @@ import {
 } from "framer-motion";
 import { wrap } from "@motionone/utils";
 
-export default function ParallaxText({ children, baseVelocity = 100 }) {
+export default function ParallaxText({
+  children,
+  baseVelocity = 100,
+  details = [-42, -25],
+}) {
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
@@ -28,7 +32,7 @@ export default function ParallaxText({ children, baseVelocity = 100 }) {
    * have to replace for wrapping that works for you or dynamically
    * calculate
    */
-  const x = useTransform(baseX, (v) => `${wrap(-42, 0, v)}%`);
+  const x = useTransform(baseX, (v) => `${wrap(details[0], details[1], v)}%`);
 
   const directionFactor = useRef(1);
   useAnimationFrame((t, delta) => {

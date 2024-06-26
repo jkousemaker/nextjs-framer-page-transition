@@ -84,12 +84,16 @@ function AuroraPlane() {
   );
   useFrame((state, delta) => {
     if (meshRef.current) {
-      meshRef.current.material.uniforms.iTime.value = state.clock.elapsedTime;
+      meshRef.current.material.uniforms.iTime.value =
+        state.clock.elapsedTime * 20;
       meshRef.current.material.uniforms.iResolution.value.set(
         size.width,
         size.height
       );
-      meshRef.current.material.uniforms.iMouse.value.set(mouse.x, mouse.y);
+      meshRef.current.material.uniforms.iMouse.value.set(
+        mouse.x.get() / 10,
+        mouse.y.get() / 10
+      );
     }
   });
 

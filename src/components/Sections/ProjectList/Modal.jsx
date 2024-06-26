@@ -69,27 +69,25 @@ export default function Modal({ modal, projects, parentRef }) {
         style={{ top: index * -100 + "%" }}
         className="size-full absolute transition-all duration-500 ease-[0.76,0,0.24,1]"
       >
-        <AnimatePresence mode="sync">
-          {projects.map((project, index) => {
-            const { img, title, color } = project;
-            return (
-              <motion.div
-                exit={{ x: 100 }}
-                style={{ scale: 1, backgroundColor: color }}
-                className="size-full flex items-center justify-center"
-                key={`modal_${index}`}
-              >
-                <Image
-                  src={img}
-                  width={300}
-                  height={0}
-                  alt={title}
-                  className="h-auto"
-                />
-              </motion.div>
-            );
-          })}
-        </AnimatePresence>
+        {projects.map((project, index) => {
+          const { img, title, color } = project;
+          return (
+            <motion.div
+              exit={{ x: 100 }}
+              style={{ scale: 1, backgroundColor: color }}
+              className="size-full flex items-center justify-center"
+              key={`modal_${index}`}
+            >
+              <Image
+                src={img}
+                width={300}
+                height={0}
+                alt={title}
+                className="h-auto"
+              />
+            </motion.div>
+          );
+        })}
       </motion.div>
     </motion.div>
   );

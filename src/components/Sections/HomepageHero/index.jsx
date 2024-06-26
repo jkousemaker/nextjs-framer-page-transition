@@ -68,8 +68,10 @@ export default function HeroSection() {
             Join The Revolution
           </button>
           <h1 className="text-9xl font-semibold tracking-[1em]">
-            <ParallaxText baseVelocity={-5}>Gabryella Teixeira</ParallaxText>
-            <ParallaxText baseVelocity={10}>
+            <ParallaxText baseVelocity={-5} details={[-38, -1]}>
+              Gabryella Teixeira
+            </ParallaxText>
+            <ParallaxText baseVelocity={2}>
               <div className="flex flex-row gap-56">
                 <p>Creative Designer</p>
                 <p>Moddeler</p>

@@ -62,10 +62,6 @@ function Scene({}) {
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
     material.current.uniforms.iTime.value = elapsedTime * 2;
-    material.current.uniforms.iMouse.value = new THREE.Vector2(
-      mouse.x.get(),
-      mouse.y.get()
-    );
   });
   return (
     <>
@@ -80,7 +76,6 @@ function Scene({}) {
               iResolution: {
                 value: new THREE.Vector2(size.width, size.height),
               },
-              iMouse: { value: new THREE.Vector2(0, 0) },
             }}
           />
         </Plane>
