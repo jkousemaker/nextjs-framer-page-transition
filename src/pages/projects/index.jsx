@@ -1,8 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { Suspense, useRef, useMemo, useCallback, useEffect } from "react";
-import useMouse from "@/utils/hooks/useMouse";
+import { Suspense, useRef, useMemo } from "react";
 
 const View = dynamic(
   () => import("@/components/Canvas/View").then((mod) => mod.View),
@@ -34,12 +33,9 @@ const View = dynamic(
   }
 );
 
-import { Canvas, extend, useThree, useFrame } from "@react-three/fiber";
-import { useScroll, useMotionValueEvent, useVelocity } from "framer-motion";
-import CustomShaderMaterial from "three-custom-shader-material";
+import { useThree, useFrame } from "@react-three/fiber";
 import { Curve } from "@/components/Layout/Curve";
-import { shaderMaterial } from "@react-three/drei";
-import { Vector2, Color } from "three";
+import { Vector2 } from "three";
 import vertexShader from "!!raw-loader!./vertexShader.glsl";
 import fragmentShader from "!!raw-loader!./fragmentShader.glsl";
 export default function Projects() {
@@ -71,9 +67,7 @@ function Scene() {
 
 function AuroraPlane() {
   const meshRef = useRef();
-  const mousePosition = useRef({ x: 0, y: 0 });
   const { size } = useThree();
-  const mouse = useMouse();
   const uniforms = useMemo(
     () => ({
       iTime: { value: 0.0 },
@@ -89,10 +83,6 @@ function AuroraPlane() {
       meshRef.current.material.uniforms.iResolution.value.set(
         size.width,
         size.height
-      );
-      meshRef.current.material.uniforms.iMouse.value.set(
-        mouse.x.get() / 10,
-        mouse.y.get() / 10
       );
     }
   });
