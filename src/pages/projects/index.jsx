@@ -47,16 +47,33 @@ export default function Projects() {
       <Curve backgroundColor="#B0AD98">
         <section className="relative w-full grid grid-cols-[repeat(12,minmax(0,1fr))] gap-x-[2vw] py-[clamp(30px,4vw,50px)] px-[max(5vw,40px)]">
           <div className="relative col-[1_/_span_12] leading-none">
-            <h4 className="text-[8vw] tracking-tight font-medium leading-[1.4] inline-block">
+            <h4 className="text-[8vw] tracking-tight font-medium leading-[.9] inline-block">
               <div className="flex flex-row flex-nowrap">
                 <SplitWord>Feautured</SplitWord>
                 &nbsp;
                 <SplitWord>Work</SplitWord>
               </div>
             </h4>
+            <div className="absolute right-0 bottom-0 w-[calc(((100%-11*2vw)/12)_*_3_+_2vw_*2)] uppercase text-[.9vw] font-medium leading-relaxed">
+              <div className="relative overflow-hidden">
+                <div className="block text-start w-full">
+                  A SELECTION OF OUR MOST PASSIONATELY
+                </div>
+              </div>
+              <div className="relative overflow-hidden">
+                <div className="block text-start w-full">
+                  CRAFTED WORKS WITH FORWARD-THINKING
+                </div>
+              </div>
+              <div className="relative overflow-hidden">
+                <div className="block text-start w-full">
+                  CLIENTS AND FRIENDS OVER THE YEARS
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="absolute right-0 bottom-0 w-[calc((100%-11*2vw)/12)_*_3_+_2_v_w_*2]"></div>
-          <div className="relative w-full grid grid-cols-[repeat(12,minmax(0,1fr))] gap-x-[2vw] mt-[calc(10px*8)]">
+
+          <div className="relative w-full grid grid-cols-[repeat(12,minmax(0,1fr))] gap-x-[2vw] mt-[calc(10px*8)] col-[1_/_span_12]">
             {projects.map((project, index) => (
               <ProjectCard key={index} project={project}>
                 <View className="size-full absolute inset-0">
