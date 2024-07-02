@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import { text, curve, translate } from "./anim";
 import { cn } from "@/utils/cn";
 import { routes } from "@/data/routes";
-
 const anim = (variants) => {
   return {
     variants,
@@ -31,15 +30,12 @@ export const Curve = React.forwardRef(({ children, backgroundColor }, ref) => {
       });
     }
 
-    window.scrollTo(0, 0);
-
     resize();
     window.addEventListener("resize", resize);
     return () => {
       window.removeEventListener("resize", resize);
     };
   }, []);
-
   return (
     <div className="min-h-screen" style={{ backgroundColor }} ref={ref}>
       <div

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { use, useEffect } from "react";
 import Link from "next/link";
 import {
   AnimatePresence,
@@ -14,6 +14,10 @@ import useMouse from "@/utils/hooks/useMouse";
 import useDimension from "@/utils/hooks/useDimension";
 import Modal from "./Modal";
 export default function ProjectList() {
+  const listContainer = useRef();
+  useEffect(() => {
+    console.log(listContainer.current);
+  }, []);
   return (
     <section className="w-full px-5">
       <div className="mb-10">
@@ -29,32 +33,31 @@ export default function ProjectList() {
         <div className="col-span-1 flex justify-end">year</div>
       </div>
       <div className="pt-[3.3333vw] relative">
-        <List />
+        <ul ref={listContainer} className="pointer-events-auto ">
+          <List parentRef={listContainer} />
+        </ul>
       </div>
     </section>
   );
 }
 
-function List() {
+function List({ parentRef }) {
   const [modal, setModal] = useState({ active: false, index: 0 });
   const handleSetModal = useCallback((newModal) => {
     setModal(newModal);
   }, []);
-  const listContainer = useRef(null);
+
   return (
     <>
-      <Modal modal={modal} projects={projects} />
-      <ul ref={listContainer} className="pointer-events-auto ">
-        {projects.map((project, index) => (
-          <Project
-            key={index}
-            index={index}
-            project={project}
-            setModal={handleSetModal}
-            parentRef={listContainer}
-          />
-        ))}
-      </ul>
+      <Modal modal={modal} projects={projects} parentRef={parentRef} />
+      {projects.map((project, index) => (
+        <Project
+          key={index}
+          index={index}
+          project={project}
+          setModal={handleSetModal}
+        />
+      ))}
     </>
   );
 }

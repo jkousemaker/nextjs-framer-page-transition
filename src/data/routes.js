@@ -11,16 +11,21 @@ export const routes = [
   },
   {
     id: 2,
+    label: "Work",
+    pathname: "/work",
+  },
+  {
+    id: 3,
     label: "About",
     pathname: "/about",
   },
   {
-    id: 3,
+    id: 4,
     label: "Contact",
     pathname: "/contact",
   },
   {
-    id: 4,
+    id: 5,
     label: "Playground",
     pathname: "/playground",
   },

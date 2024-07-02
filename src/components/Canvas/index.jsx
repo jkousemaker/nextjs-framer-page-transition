@@ -4,9 +4,16 @@ import { Canvas } from "@react-three/fiber";
 import { Preload } from "@react-three/drei";
 import { r3f } from "@/utils/global";
 import * as THREE from "three";
+import { useProgress } from "@react-three/drei";
+import { useEffect } from "react";
 
 export default function RatCanvas({ ...props }) {
   // Everything defined in here will persist between route changes, only children are swapped
+  const progress = useProgress();
+  console.log(progress);
+  useEffect(() => {
+    console.log("progress", progress);
+  }, [progress]);
   return (
     <Canvas
       {...props}

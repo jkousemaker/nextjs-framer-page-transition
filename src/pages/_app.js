@@ -28,8 +28,13 @@ export default function App({ Component, pageProps }) {
     const easing = (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t));
     return easing(t);
   }
+  useEffect(() => {
+    if (mouse) {
+      mousePosition.current = mouse;
+    }
+  }, [router.route, mouse]);
   return (
-    <ReactLenis options={{ duration: 1, easing: calculateEasing }} root>
+    <ScrollHandler router={router}>
       <div ref={container} className=""></div>
       <Header />
 
@@ -52,6 +57,33 @@ export default function App({ Component, pageProps }) {
         eventPrefix="client"
         className="text-[6rem] font-semibold tracking-tight"
       />
+    </ScrollHandler>
+  );
+}
+
+function ScrollHandler({ children, router, ...props }) {
+  const lenis = useLenis();
+  function calculateEasing(t) {
+    const easing = (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t));
+    return easing(t);
+  }
+  useEffect(() => {
+    if (lenis) {
+      lenis.scrollTo("body");
+    }
+  }, [router, lenis]);
+  return (
+    <ReactLenis options={{ duration: 1, easing: calculateEasing }} root>
+      <button
+        onClick={() => {
+          lenis.scrollTo("body");
+        }}
+        // disabled={!isLenisReady}
+        className="fixed z-[999] top-44 p-5 rounded-xl bg-black text-white shadow-2xl shadow-white"
+      >
+        Scroll to Element
+      </button>
+      {children}
     </ReactLenis>
   );
 }

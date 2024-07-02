@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { Suspense, useRef, useMemo } from "react";
+import { Suspense, useRef, useMemo, useEffect } from "react";
 
 const View = dynamic(
   () => import("@/components/Canvas/View").then((mod) => mod.View),
@@ -34,26 +34,51 @@ const View = dynamic(
 );
 
 import { useThree, useFrame } from "@react-three/fiber";
+
 import { Curve } from "@/components/Layout/Curve";
 import { Vector2 } from "three";
 import vertexShader from "!!raw-loader!./vertexShader.glsl";
 import fragmentShader from "!!raw-loader!./fragmentShader.glsl";
+import { projects } from "@/data/projects";
+import ProjectCard from "@/components/Elements/ProjectCard.jsx";
 export default function Projects() {
   return (
     <>
       <Curve backgroundColor="#B0AD98">
-        <section className="h-[100vh]" />
-        <section className="h-[300vh] bg-red-500/50"></section>
-        <section className="h-[200vh]" />
-        <div className="fixed inset-0 size-full">
-          <View className="flex h-screen w-full flex-col items-center justify-center">
-            <Suspense fallback={null}>
-              <Scene />
-            </Suspense>
-          </View>
-        </div>
+        <section className="relative w-full grid grid-cols-[repeat(12,minmax(0,1fr))] gap-x-[2vw] py-[clamp(30px,4vw,50px)] px-[max(5vw,40px)]">
+          <div className="relative col-[1_/_span_12] leading-none">
+            <h4 className="text-[8vw] tracking-tight font-medium leading-[1.4] inline-block">
+              <div className="flex flex-row flex-nowrap">
+                <SplitWord>Feautured</SplitWord>
+                &nbsp;
+                <SplitWord>Work</SplitWord>
+              </div>
+            </h4>
+          </div>
+          <div className="absolute right-0 bottom-0 w-[calc((100%-11*2vw)/12)_*_3_+_2_v_w_*2]"></div>
+          <div className="relative w-full grid grid-cols-[repeat(12,minmax(0,1fr))] gap-x-[2vw] mt-[calc(10px*8)]">
+            {projects.map((project, index) => (
+              <ProjectCard key={index} project={project}>
+                <View className="size-full absolute inset-0">
+                  <Suspense fallback={null}>
+                    <Scene />
+                  </Suspense>
+                </View>
+              </ProjectCard>
+            ))}
+          </div>
+        </section>
       </Curve>
     </>
+  );
+}
+
+function SplitWord({ children }) {
+  const words = children.split("");
+  return (
+    <span className="relative inline-block">
+      <span className="relative z-10">{children}</span>
+    </span>
   );
 }
 

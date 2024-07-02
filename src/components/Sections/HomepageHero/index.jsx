@@ -50,7 +50,7 @@ import fragmentShader from "!!raw-loader!@/shaders/BackgroundShader/fragmentShad
 import "@/utils/materials";
 export default function HeroSection() {
   return (
-    <section className="h-screen ">
+    <section id="anchor" className="h-screen ">
       <div className="grid size-full grid-cols-11 grid-rows-7 p-10 gap-5">
         <View
           onLoad={() => console.log("loaded")}

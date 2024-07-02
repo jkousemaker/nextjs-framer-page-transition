@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { throttle } from "lodash"; // Assuming lodash is installed
+import { throttle } from "lodash";
 
 function useElementBounds() {
   const ref = useRef(null);
@@ -8,7 +8,6 @@ function useElementBounds() {
   const updateBounds = useCallback(() => {
     if (ref.current) {
       const rect = ref.current.getBoundingClientRect();
-      console.log(rect);
       setBounds({
         top: rect.top,
         left: rect.left,
@@ -21,21 +20,25 @@ function useElementBounds() {
   }, []);
 
   useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    // Create a ResizeObserver
+    const resizeObserver = new ResizeObserver(throttle(updateBounds, 100));
+
+    // Observe the element
+    resizeObserver.observe(element);
+
     // Update bounds initially
     updateBounds();
 
-    // Throttle the updateBounds function to improve performance
-    const handleResize = throttle(updateBounds, 100);
-
-    // Update bounds on window resize
-    window.addEventListener("resize", handleResize);
-
-    // Cleanup event listener on unmount
+    // Cleanup
     return () => {
-      window.removeEventListener("resize", handleResize);
-      handleResize.cancel(); // Cancel any pending throttled calls
+      resizeObserver.disconnect();
     };
   }, [updateBounds]);
+
+  return [ref, bounds];
 }
 
 export default useElementBounds;

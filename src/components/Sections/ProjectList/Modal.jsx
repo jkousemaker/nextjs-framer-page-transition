@@ -1,5 +1,5 @@
 "use client";
-import { AnimatePresence, motion, useSpring } from "framer-motion";
+import { AnimatePresence, m, motion, useSpring } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import useElementBounds from "@/utils/hooks/useBounds";
@@ -29,33 +29,11 @@ export default function Modal({ modal, projects, parentRef }) {
   const mouse = useMouse();
 
   const dimension = useDimension();
-
+  console.log(bounds);
   const smoothMouse = {
     x: useSpring(mouse.x, { stiffness: 300, damping: 90 }),
     y: useSpring(mouse.y, { stiffness: 300, damping: 90 }),
   };
-
-  useEffect(() => {
-    if (!parentRef) {
-      return;
-    }
-    const handleMouseMove = (e) => {
-      if (parentRef) {
-        const rect = parentRef.getBoundingClientRect();
-
-        const distanceToLeft = Math.abs(e.clientX - rect.left);
-        const distanceToTop = Math.abs(e.clientY - rect.top);
-
-        smoothMouse.x.set(distanceToLeft);
-        smoothMouse.y.set(distanceToTop);
-      }
-    };
-    parentRef.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      parentRef.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, [active]);
   return (
     <motion.div
       ref={modalContainer}

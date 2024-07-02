@@ -5,16 +5,18 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { routes } from "@/data/routes";
 import { useRouter } from "next/router";
+
 export default function Header() {
   const [activeTab, setActiveTab] = useState(null);
   const router = useRouter();
+
   useEffect(() => {
     const currentRoute = routes.find(
       (route) => route.pathname === router.pathname
     );
 
     setActiveTab(currentRoute.id);
-  }, []);
+  }, [router]);
   return (
     <header className="fixed top-0 left-0 w-full z-50 text-dark flex flex-row justify-between px-10 py-5">
       <div className="grid place-items-center">

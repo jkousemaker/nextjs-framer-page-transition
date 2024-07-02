@@ -6,6 +6,8 @@ export const projects = [
     img: "https://images.unsplash.com/photo-1644843521796-33876c641aeb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-1",
     color: "#FF5733",
+
+    keyWords: ["Web", "Design", "Development", "3D"],
   },
   {
     id: 2,
@@ -14,6 +16,7 @@ export const projects = [
     img: "https://images.unsplash.com/photo-1717501218347-64853a917fd8?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-2",
     color: "#33FF57",
+    keyWords: ["Web", "Design", "Development", "3D"],
   },
   {
     id: 3,
@@ -22,6 +25,7 @@ export const projects = [
     img: "https://images.unsplash.com/photo-1717406038728-53b8ba62490f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-3",
     color: "#3357FF",
+    keyWords: ["Web", "Design", "Development", "3D"],
   },
   {
     id: 4,
@@ -30,6 +34,7 @@ export const projects = [
     img: "https://images.unsplash.com/photo-1644843521796-33876c641aeb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-4",
     color: "#FF33F1",
+    keyWords: ["Web", "Design", "Development", "3D"],
   },
   {
     id: 5,
@@ -38,6 +43,7 @@ export const projects = [
     img: "https://images.unsplash.com/photo-1717501218347-64853a917fd8?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-5",
     color: "#33FFF1",
+    keyWords: ["Web", "Design", "Development", "3D"],
   },
   {
     id: 6,
@@ -46,6 +52,7 @@ export const projects = [
     img: "https://images.unsplash.com/photo-1717406038728-53b8ba62490f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-6",
     color: "#FF3333",
+    keyWords: ["Web", "Design", "Development", "3D"],
   },
   {
     id: 7,
@@ -54,6 +61,7 @@ export const projects = [
     img: "https://images.unsplash.com/photo-1644843521796-33876c641aeb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-7",
     color: "#33FF33",
+    keyWords: ["Web", "Design", "Development", "3D"],
   },
   {
     id: 8,
@@ -62,6 +70,7 @@ export const projects = [
     img: "https://images.unsplash.com/photo-1717501218347-64853a917fd8?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-8",
     color: "#3333FF",
+    keyWords: ["Web", "Design", "Development", "3D"],
   },
   {
     id: 9,
@@ -70,6 +79,7 @@ export const projects = [
     img: "https://images.unsplash.com/photo-1717406038728-53b8ba62490f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-9",
     color: "#FFFF33",
+    keyWords: ["Web", "Design", "Development", "3D"],
   },
   {
     id: 10,
@@ -78,6 +88,7 @@ export const projects = [
     img: "https://images.unsplash.com/photo-1644843521796-33876c641aeb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-10",
     color: "#33FFFF",
+    keyWords: ["Web", "Design", "Development", "3D"],
   },
   {
     id: 11,
@@ -86,6 +97,7 @@ export const projects = [
     img: "https://images.unsplash.com/photo-1717501218347-64853a917fd8?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-11",
     color: "#FF33FF",
+    keyWords: ["Web", "Design", "Development", "3D"],
   },
   {
     id: 12,
@@ -94,5 +106,6 @@ export const projects = [
     img: "https://images.unsplash.com/photo-1717406038728-53b8ba62490f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     href: "/projects/project-12",
     color: "#FFB733",
+    keyWords: ["Web", "Design", "Development", "3D"],
   },
 ];
