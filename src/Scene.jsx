@@ -30,9 +30,7 @@ export default function Scene({ scrollY }) {
   const noisyMaterial = useRef();
   const velocity = useVelocity(scrollY);
   const springVelocity = useSpring(velocity, { stiffness: 100, damping: 20 });
-  useMotionValueEvent(velocity, "change", (latest) => {
-    console.log(latest);
-  });
+
   const { scene, camera, size } = useThree();
   const threshold = transform(springVelocity.get(), [0, 1], [5.0, 30.0], {
     clamp: false,
@@ -40,7 +38,6 @@ export default function Scene({ scrollY }) {
   useFrame((state, delta, clock) => {
     noisyMaterial.current.uniforms.uniforms.current.u_time += delta;
     noisyMaterial.current.uniforms.uniforms.current.u_threshold = threshold;
-    console.log(noisyMaterial.current.uniforms.uniforms.current);
   });
   return (
     <>

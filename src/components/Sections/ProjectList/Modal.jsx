@@ -29,7 +29,7 @@ export default function Modal({ modal, projects, parentRef }) {
   const mouse = useMouse();
 
   const dimension = useDimension();
-  console.log(bounds);
+
   const smoothMouse = {
     x: useSpring(mouse.x, { stiffness: 300, damping: 90 }),
     y: useSpring(mouse.y, { stiffness: 300, damping: 90 }),

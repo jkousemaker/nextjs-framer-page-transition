@@ -33,7 +33,6 @@ export default function ContactCanvas() {
   const { scrollYProgress } = useScroll({});
   const scrollSpring = useSpring(scrollYProgress);
   useEffect(() => {
-    console.log(ref.current);
     ref.current.u_resolution = [window.innerWidth, window.innerHeight];
   }, [progress]);
 
@@ -45,7 +44,6 @@ export default function ContactCanvas() {
     );
     ref.current.uDisplace = uDisplace;
     //ref.current.uDisplace = Math.sin(clock.getElapsedTime() * 0.5) * 2;
-    console.log(uDisplace);
   });
   return (
     <>
@@ -65,9 +63,6 @@ export default function ContactCanvas() {
 }
 
 function BasicModel(props) {
-  const ref = useIntersect((visible) =>
-    console.log("object is visible", visible)
-  );
   return (
     <mesh ref={ref} {...props} dispose={null}>
       <boxGeometry args={[1, 1, 1]} />

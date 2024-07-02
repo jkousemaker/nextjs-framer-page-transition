@@ -8,11 +8,6 @@ import ProjectList from "@/components/Sections/ProjectList";
 export default function Home() {
   return (
     <Curve backgroundColor="#999d9e">
-      <h2>
-        <a class="c-btn" href="#pages-main">
-          scroll down
-        </a>
-      </h2>
       <HeroSection />
       <ProjectList />
       <main

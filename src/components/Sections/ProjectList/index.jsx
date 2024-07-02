@@ -15,9 +15,7 @@ import useDimension from "@/utils/hooks/useDimension";
 import Modal from "./Modal";
 export default function ProjectList() {
   const listContainer = useRef();
-  useEffect(() => {
-    console.log(listContainer.current);
-  }, []);
+
   return (
     <section className="w-full px-5">
       <div className="mb-10">

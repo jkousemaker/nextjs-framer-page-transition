@@ -11,7 +11,7 @@ export default function RouteListener() {
 
     const completeHandler = () => {
       console.log("Router change completed");
-      //window.scrollTo(0, 0);
+      window.scrollTo(0, 0, { behavior: "smooth" });
     };
 
     router.events.on("routeChangeStart", startHandler);

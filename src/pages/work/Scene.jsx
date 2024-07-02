@@ -122,7 +122,6 @@ export const Pseudo3DMaterial = shaderMaterial(
 extend({ ImageFadeMaterial, Pseudo3DMaterial });
 
 function Frames({ work }) {
-  console.log(work);
   const ref = useRef();
   return (
     <group ref={ref}>

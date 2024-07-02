@@ -53,7 +53,6 @@ export default function HeroSection() {
     <section id="anchor" className="h-screen ">
       <div className="grid size-full grid-cols-11 grid-rows-7 p-10 gap-5">
         <View
-          onLoad={() => console.log("loaded")}
           as="div"
           camera={{ position: [0.0, 0.0, 1.5] }}
           className="bg-blue-500/50 col-span-full row-span-3 overflow-hidden rounded-3xl"

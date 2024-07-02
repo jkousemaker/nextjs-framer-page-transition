@@ -11,6 +11,7 @@ import { useEffect, useRef, useCallback } from "react";
 import Header from "@/components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
 import useMouse from "@/utils/hooks/useMouse";
+import RouteListener from "./route-listener";
 
 const RatScene = dynamic(() => import("@/components/Canvas/index"), {
   ssr: false,
@@ -69,8 +70,9 @@ function ScrollHandler({ children, router, ...props }) {
   }
   useEffect(() => {
     if (lenis) {
-      lenis.scrollTo("body");
+      //lenis.scrollTo("body");
     }
+    scrollTo({ top: 0, behavior: "smooth" });
   }, [router, lenis]);
   return (
     <ReactLenis options={{ duration: 1, easing: calculateEasing }} root>
@@ -83,6 +85,7 @@ function ScrollHandler({ children, router, ...props }) {
       >
         Scroll to Element
       </button>
+      <RouteListener />
       {children}
     </ReactLenis>
   );
