@@ -44,7 +44,7 @@ export const Curve = React.forwardRef(({ children, backgroundColor }, ref) => {
     >
       <div
         className={cn(
-          "fixed h-[calc(100vh+600px)] w-screen pointer-events-none top-0 left-0 bg-black opacity-100 transition-opacity duration-100"
+          "fixed h-[calc(100vh+600px)] w-screen pointer-events-none top-0 left-0 bg-black opacity-10 transition-opacity duration-100"
         )}
       />
       <div className="fixed top-0 z-[99999] pointer-events-none h-screen w-screen grid place-items-center">

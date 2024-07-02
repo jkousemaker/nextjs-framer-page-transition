@@ -81,7 +81,7 @@ function ScrollHandler({ children, router, ...props }) {
           lenis.scrollTo("body");
         }}
         // disabled={!isLenisReady}
-        className="fixed z-[999] top-44 p-5 rounded-xl bg-black text-white shadow-2xl shadow-white"
+        className="fixed top-44 p-5 rounded-xl bg-black text-white shadow-2xl shadow-white, "
       >
         Scroll to Element
       </button>
