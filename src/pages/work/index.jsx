@@ -32,6 +32,7 @@ const View = dynamic(
     ),
   }
 );
+
 import Scene from "./Scene";
 
 import { Curve } from "@/components/Layout/Curve";
@@ -42,9 +43,7 @@ export default function Work() {
       <Curve backgroundColor="">
         <div className="relative inset-0 size-full z-[999]">
           <View className="flex h-screen w-full flex-col items-center justify-center">
-            <Suspense fallback={null}>
-              <Scene />
-            </Suspense>
+            <Scene />
           </View>
         </div>
       </Curve>
