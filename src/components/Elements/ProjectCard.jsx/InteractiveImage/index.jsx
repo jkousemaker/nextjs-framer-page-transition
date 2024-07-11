@@ -47,13 +47,13 @@ const View = dynamic(
   }
 );
 import { lerp } from "three/src/math/MathUtils";
-import { useSpring } from "framer-motion";
+import { useSpring, useTransform } from "framer-motion";
 export default function InteractiveImage({ project }) {
   const shakeRef = useRef();
 
   return (
-    <div className="relative pt-[65%]">
-      <View className="absolute size-full inset-0">
+    <div className="relative pt-[65%] ">
+      <View className="absolute size-full inset-0 ">
         <Model />
         <OrthographicCamera makeDefault position={[0, 0, 1]} zoom={1} />
       </View>
@@ -71,7 +71,8 @@ function Model(props) {
 
   const currentMouse = useRef([0, 0]);
   const targetMouse = useRef([0, 0]);
-
+  const scale = useTransform(() => (hovered ? 1.2 : 1.05));
+  const scaleSmooth = useSpring(scale, { stiffness: 300, damping: 50 });
   useFrame((state) => {
     if (hovered) {
       targetMouse.current = [state.pointer.x * 0.01, state.pointer.y * 0.01];
@@ -93,24 +94,25 @@ function Model(props) {
 
     depthMaterial.current.uMouse = currentMouse.current;
   });
-
+  const MotionPlane = motion(Plane);
   return (
     <>
       <Rig hovered={hovered} />
-
-      <Plane
-        ref={imageRef}
-        args={[1, 1]}
-        scale={size}
-        onPointerEnter={() => setHovered(true)}
-        onPointerLeave={() => setHovered(false)}
-      >
-        <pseudo3DMaterial
-          ref={depthMaterial}
-          uImage={texture}
-          uDepthMap={depthMap}
-        />
-      </Plane>
+      <group scale={size}>
+        <MotionPlane
+          scale={scaleSmooth}
+          ref={imageRef}
+          args={[1, 1]}
+          onPointerEnter={() => setHovered(true)}
+          onPointerLeave={() => setHovered(false)}
+        >
+          <pseudo3DMaterial
+            ref={depthMaterial}
+            uImage={texture}
+            uDepthMap={depthMap}
+          />
+        </MotionPlane>
+      </group>
     </>
   );
 }
@@ -123,7 +125,11 @@ function Rig({ hovered }) {
   useFrame((state) => {
     if (hovered) {
       // Update target position when hovered
-      targetPosition.current.set(state.pointer.x * 20, 1, 60);
+      targetPosition.current.set(
+        state.pointer.x * 20,
+        state.pointer.y * 20,
+        600
+      );
     } else {
       // Reset target position when not hovered
       targetPosition.current.copy(initialPosition);
@@ -141,11 +147,11 @@ function Rig({ hovered }) {
 
   return (
     <CameraShake
-      maxYaw={0.1}
-      maxPitch={0.5}
+      maxYaw={5}
+      maxPitch={2}
       maxRoll={0}
-      yawFrequency={5}
-      pitchFrequency={5}
+      yawFrequency={0.1}
+      pitchFrequency={0.5}
       rollFrequency={0}
       intensity={hovered ? 1 : 0.1} // Adjust intensity based on hover state
     />

@@ -22,30 +22,48 @@ export default function Scene() {
   return (
     <>
       <group position={[0, -0.5, 0]}>
-        {
-          //<Frames work={work} />
-        }
         <Model />
-        <mesh rotation={[-Math.PI / 2, 0, 0]}>
-          <planeGeometry args={[5, 5]} />
-          <MeshReflectorMaterial
-            blur={[300, 100]}
-            resolution={2048}
-            mixBlur={1}
-            mixStrength={80}
-            roughness={1}
-            depthScale={1.2}
-            minDepthThreshold={0.4}
-            maxDepthThreshold={1.4}
-            color="#050505"
-            metalness={0.5}
-          />
-        </mesh>
       </group>
 
       <Environment preset="city" />
       <fog attach="fog" args={["#191920", 0, 15]} />
     </>
+  );
+}
+
+function Model(props) {
+  const [hovered, setHover] = useState(false);
+  const depthMaterial = useRef();
+  const texture = useTexture("/imgs/color-mountains.jpg");
+  const depthMap = useTexture("/imgs/depth-mountains.png");
+  const { viewport } = useThree();
+  const mouse = useMotionValue({ x: 0, y: 0 });
+  useFrame((state) => {
+    if (hovered) {
+      depthMaterial.current.uMouse = [
+        state.pointer.x * 0.01,
+        state.pointer.y * 0.01,
+      ];
+    }
+  });
+  useCursor(hovered);
+  const MotionPlane = motion(Plane);
+  return (
+    <MotionPlane
+      onPointerOver={(e) => {
+        setHover(true);
+        console.log("hovered");
+      }}
+      onPointerOut={(e) => setHover(false)}
+      args={[1, 1]}
+      scale={[viewport.width, viewport.height, 1]}
+    >
+      <pseudo3DMaterial
+        ref={depthMaterial}
+        uImage={texture}
+        uDepthMap={depthMap}
+      />
+    </MotionPlane>
   );
 }
 
@@ -120,84 +138,3 @@ export const Pseudo3DMaterial = shaderMaterial(
 );
 
 extend({ ImageFadeMaterial, Pseudo3DMaterial });
-
-function Frames({ work }) {
-  const ref = useRef();
-  return (
-    <group ref={ref}>
-      {work.map((item, index) => (
-        <Frame key={index} item={item} position={[index * 1, 1.65, 0]} />
-      ))}
-    </group>
-  );
-}
-function Frame({ item, ...props }) {
-  const ref = useRef();
-  const [texture1, texture2, dispTexture] = useTexture([
-    "/imgs/Img1.jpg",
-    "/imgs/Img2.jpg",
-    "/imgs/displacement/13.jpg",
-  ]);
-  const [hovered, setHover] = useState(false);
-  useFrame(() => {
-    ref.current.dispFactor = THREE.MathUtils.lerp(
-      ref.current.dispFactor,
-      hovered ? 1 : 0,
-      0.075
-    );
-  });
-  return (
-    <Plane
-      onPointerOver={(e) => setHover(true)}
-      onPointerOut={(e) => setHover(false)}
-      position={[0, 1.65, 0]}
-      scale={0.1}
-      args={[32, 32]}
-      {...props}
-    >
-      <imageFadeMaterial
-        ref={ref}
-        tex={texture1}
-        tex2={texture2}
-        disp={dispTexture}
-        toneMapped={false}
-      />
-    </Plane>
-  );
-}
-
-function Model(props) {
-  const [hovered, setHover] = useState(false);
-  const depthMaterial = useRef();
-  const texture = useTexture("/imgs/color-mountains.jpg");
-  const depthMap = useTexture("/imgs/depth-mountains.png");
-  const { viewport } = useThree();
-  const mouse = useMotionValue({ x: 0, y: 0 });
-  useFrame((state) => {
-    if (hovered) {
-      depthMaterial.current.uMouse = [
-        state.pointer.x * 0.01,
-        state.pointer.y * 0.01,
-      ];
-    }
-  });
-  useCursor(hovered);
-  const MotionPlane = motion(Plane);
-  return (
-    <MotionPlane
-      onPointerOver={(e) => {
-        setHover(true);
-        console.log("hovered");
-      }}
-      onPointerOut={(e) => setHover(false)}
-      args={[1, 1]}
-      scale={[viewport.width, viewport.height, 1]}
-    >
-      <pseudo3DMaterial
-        ref={depthMaterial}
-        uImage={texture}
-        uDepthMap={depthMap}
-      />
-    </MotionPlane>
-  );
-}
