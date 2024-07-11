@@ -47,7 +47,12 @@ const View = dynamic(
   }
 );
 import { lerp } from "three/src/math/MathUtils";
-import { useSpring, useTransform } from "framer-motion";
+import {
+  useSpring,
+  useTransform,
+  useScroll,
+  useMotionValueEvent,
+} from "framer-motion";
 export default function InteractiveImage({ project }) {
   const shakeRef = useRef();
 
@@ -68,7 +73,6 @@ function Model(props) {
   const texture = useTexture("/imgs/home.webp");
   const depthMap = useTexture("/imgs/home_depth.webp");
   const size = useAspect(1920, 1080, 1);
-
   const currentMouse = useRef([0, 0]);
   const targetMouse = useRef([0, 0]);
   const scale = useTransform(() => (hovered ? 1.2 : 1.05));

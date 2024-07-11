@@ -39,7 +39,7 @@ export const Curve = React.forwardRef(({ children, backgroundColor }, ref) => {
   return (
     <div
       className="min-h-screen z-20 absolute size-full inset-0"
-      style={{ backgroundColor }}
+      style={{ backgroundColor: "#ffffff00" }}
       ref={ref}
     >
       <div
