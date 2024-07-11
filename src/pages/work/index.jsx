@@ -39,8 +39,8 @@ import { Curve } from "@/components/Layout/Curve";
 export default function Work() {
   return (
     <>
-      <Curve backgroundColor="#B0AD98">
-        <div className="fixed inset-0 size-full z-[999]">
+      <Curve backgroundColor="">
+        <div className="relative inset-0 size-full z-[999]">
           <View className="flex h-screen w-full flex-col items-center justify-center">
             <Suspense fallback={null}>
               <Scene />

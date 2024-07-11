@@ -44,7 +44,7 @@ import ProjectCard from "@/components/Elements/ProjectCard.jsx";
 export default function Projects() {
   return (
     <>
-      <Curve backgroundColor="#B0AD98">
+      <Curve backgroundColor="">
         <section className="relative w-full grid grid-cols-[repeat(12,minmax(0,1fr))] gap-x-[2vw] py-[clamp(30px,4vw,50px)] px-[max(5vw,40px)]">
           <div className="relative col-[1_/_span_12] leading-none">
             <h4 className="text-[8vw] tracking-tight font-medium leading-[.9] inline-block">
@@ -73,15 +73,9 @@ export default function Projects() {
             </div>
           </div>
 
-          <div className="relative w-full grid grid-cols-[repeat(12,minmax(0,1fr))] gap-x-[2vw] mt-[calc(10px*8)] col-[1_/_span_12]">
+          <div className="relative w-full grid grid-cols-[repeat(6,minmax(0,1fr))] md:grid-cols-[repeat(12,minmax(0,1fr))] gap-x-[2vw] mt-[calc(10px*8)] col-[1_/_span_12]">
             {projects.map((project, index) => (
-              <ProjectCard key={index} project={project}>
-                <View className="size-full absolute inset-0">
-                  <Suspense fallback={null}>
-                    <Scene />
-                  </Suspense>
-                </View>
-              </ProjectCard>
+              <ProjectCard key={index} project={project} />
             ))}
           </div>
         </section>
