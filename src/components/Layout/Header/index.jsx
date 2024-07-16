@@ -6,8 +6,10 @@ import { useState, useEffect } from "react";
 import { routes } from "@/data/routes";
 import { useRouter } from "next/router";
 import Menu from "./Menu";
+import MenuButton from "./MenuButton";
 export default function Header() {
   const [activeTab, setActiveTab] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -23,6 +25,7 @@ export default function Header() {
         <div className="grid place-items-center">
           <p className="font-bold tracking-tight">Gabryella</p>
         </div>
+        <MenuButton setMenuOpen={setMenuOpen} menuOpen={menuOpen} />
         <div className="flex-row gap-5 items-center hidden xl:block pointer-events-none">
           {routes.map((route) => (
             <Link
@@ -51,7 +54,7 @@ export default function Header() {
           ))}
         </div>
         <motion.div className="absolute block xl:hidden inset-0 pointer-events-none">
-          <Menu />
+          <Menu menuOpen={menuOpen} />
         </motion.div>
       </header>
     </>

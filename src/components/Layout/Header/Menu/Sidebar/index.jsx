@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Logo from "@public/logo.svg";
 import Link from "next/link";
+import { motion } from "framer-motion";
 export default function Sidebar() {
   return (
-    <div className="flex-1 bg-[#222222] text-white pointer-events-auto">
-      <div className="gap-4 grid-rows-[auto_auto] grid-cols-[1fr] [grid-auto-columns:_1fr] w-4/5 h-4/5 mx-auto pt-16 grid">
+    <div className="flex-1 text-white pointer-events-auto relative">
+      <div className="gap-4 grid-rows-[auto_auto] grid-cols-[1fr] [grid-auto-columns:_1fr] w-4/5 h-4/5 mx-auto pt-16 grid relative z-20">
         <div className="flex flex-col gap-8 [grid-area:_span_1/span_1/span_1/span_1]">
           <div className="relative overflow-hidden">
             <div className="w-4/5">
@@ -27,7 +28,7 @@ export default function Sidebar() {
           <ContactItem icon="D" text="Legal" link="Privacy" />
         </div>
       </div>
-      <div className="flex flex-col w-4/5 h-1/5 mx-auto relative">
+      <div className="flex flex-col w-4/5 h-1/5 mx-auto relative z-10">
         <div className="w-full h-px relative overflow-hidden">
           <div className="w-full h-px bg-white absolute top-0 bottom-auto left-0 right-auto"></div>
         </div>
@@ -54,6 +55,24 @@ export default function Sidebar() {
           </div>
         </div>
       </div>
+      <motion.div
+        variants={{
+          initial: {
+            y: "100%",
+          },
+          enter: {
+            y: "0%",
+            transition: {
+              delay: 0.1,
+              duration: 1,
+              ease: [0.62, 0.16, 0.34, 0.96],
+            },
+          },
+        }}
+        initial="initial"
+        animate="enter"
+        className="size-full absolute bg-[#222] inset-0 z-0"
+      ></motion.div>
     </div>
   );
 }
